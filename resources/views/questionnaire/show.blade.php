@@ -5,11 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><a class="btn btn-dark" href="/home">Go Back</a> {{$questionnaire->title}}</div>
+                <a class="btn btn-outline-danger float-left" href="/home">Go Back</a>
+                <div class="card-header">{{$questionnaire->title}}</div>
 
                 <div class="card-body">
                     <a href="/questionnaires/{{$questionnaire->id}}/questions/create" class="btn btn-dark">Create a new question</a>
-                    <a href="/surveys/{{ $questionnaire->id }}-{{ Str::slug($questionnaire->title) }}" class="btn btn-dark">Take Survey</a>
+                    <a href="/surveys/{{ $questionnaire->id }}-{{ Str::slug($questionnaire->title) }}"
+                       class="btn btn-outline-success"
+                       {{ ($questionnaire->questions->count() == 0 ) ? 'style=display:none;' : '' }}>Take Survey</a>
                 </div>
             </div>
 
@@ -18,10 +21,11 @@
                     <div class="card-header">
                         {{$question->question}}
                         <div class="float-right">
-                            <form action="" method="POST">
+                            <form action="/questionnaires/{{$questionnaire->id}}/questions/{{$question->id}}" method="POST">
                                 @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger">Delete</button>
                             </form>
-                            <button class="btn btn-danger">Delete</button>
                         </div>
                     </div>
 

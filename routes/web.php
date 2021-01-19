@@ -31,8 +31,7 @@ Route::delete('/questionnaires/{questionnaire}', 'App\Http\Controllers\Questionn
 
 Route::get('/questionnaires/{questionnaire}/questions/create', 'App\Http\Controllers\QuestionController@create');
 Route::post('/questionnaires/{questionnaire}/questions', 'App\Http\Controllers\QuestionController@store');
-
-Route::delete('/questionnaires/{questionnaire}/questions/{question}', 'App\Http\Controllers\QuestionController@delete');
+Route::delete('/questionnaires/{questionnaire}/questions/{question}', 'App\Http\Controllers\QuestionController@destroy');
 
 Route::get('/surveys/{questionnaire}-{slug}', 'App\Http\Controllers\SurveyController@show');
 Route::post('/surveys/{questionnaire}-{slug}', 'App\Http\Controllers\SurveyController@store');

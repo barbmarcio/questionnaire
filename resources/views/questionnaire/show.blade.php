@@ -17,7 +17,12 @@
                 <div class="card mt-4">
                     <div class="card-header">
                         {{$question->question}}
-                        <div class="float-right"> <button class="btn btn-danger">Delete</button> </div>
+                        <div class="float-right">
+                            <form action="" method="POST">
+                                @method('DELETE')
+                            </form>
+                            <button class="btn btn-danger">Delete</button>
+                        </div>
                     </div>
 
                     <div class="card-body">
